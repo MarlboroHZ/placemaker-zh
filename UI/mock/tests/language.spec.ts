@@ -2,6 +2,14 @@ import { expect, test } from "@playwright/test";
 import { open, drawPolygon, FIELD, pickType, waitPlanned, noTextOverflow } from "./helpers";
 import locales from "../locales";
 import { FAKE_LAYERS, FAKE_FEATURES, FAKE_RECIPES, FAKE_STRINGS } from "../backend/fakeCatalog";
+import { fakeAssets } from "../backend/fakeAssets";
+import assetNames from "../asset-names.zh-HANS.json";
+
+test("all simulated asset names have Chinese translations", () => {
+    const categories = ["tree", "net.pathway", "net.road", "centerpiece", "bench", "fence", "playground", "surface", "decal", "unknown"];
+    for (const category of categories) for (const asset of fakeAssets(category))
+        expect((assetNames as Record<string, string>)[asset.name], asset.name).toMatch(/[\u3400-\u9fff]/);
+});
 
 test("all mock catalog labels, options, presets and hints have Chinese translations", () => {
     const keys = new Set(Object.keys(FAKE_STRINGS));
@@ -64,6 +72,24 @@ for (const [id,label] of [["park","公园"],["parking","停车场"],["roads","�
         }
         await noTextOverflow(page,"Chinese " + id);
         await page.getByTestId("placemaker-panel").screenshot({path:testInfo.outputPath(id+"-zh.png")});
+        if (id === "plaza") {
+            const arrangement = page.getByTestId("arrangement-arrangement");
+            await expect(arrangement).toContainText("木制长椅");
+            await expect(arrangement).toContainText("方形花箱");
+            await expect(arrangement).not.toContainText(/Wooden Bench|Square Planter/);
+            await page.getByTestId("arrangement-add-arrangement").click();
+            await expect(page.getByTestId("asset-bench-wood")).toContainText("木制长椅");
+            await expect(page.getByTestId("asset-planter-square")).toContainText("方形花箱");
+            await page.getByTestId("asset-search").fill("木制");
+            await expect(page.getByTestId("asset-bench-wood")).toBeVisible();
+            await expect(page.getByTestId("asset-planter-square")).toHaveCount(0);
+            await page.getByTestId("asset-picker-close").click();
+            await page.getByTestId("language-en-US").click();
+            await expect(arrangement).toContainText("Wooden Bench");
+            await expect(arrangement).toContainText("Square Planter");
+            await page.getByTestId("language-zh-HANS").click();
+            await expect(arrangement).toContainText("木制长椅");
+        }
         await page.getByTestId("language-en-US").click();
         await expect(page.getByTestId("language-system")).toHaveText("Follow game");
     });
