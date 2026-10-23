@@ -137,7 +137,7 @@ export const FAKE_LAYERS: MockLayer[] = [
         minArea: 1500,
     },
     {
-        id: "playground", name: "Placemaker.Playground.Name", icon: "playground", kind: "addOn", accepts: ["green", "core", "root", "block", "part", "paved"], emits: [],
+        id: "playground", name: "Placemaker.AddOn.Playground.Name", icon: "playground", kind: "addOn", accepts: ["green", "core", "root", "block", "part", "paved"], emits: [],
         controls: [
             { id: "size", kind: "choice", tier: "essential", group: "", label: "Placemaker.Playground.Size",
               options: [opt("s", "Placemaker.Size.Small"), opt("m", "Placemaker.Size.Medium"), opt("l", "Placemaker.Size.Large")], default: "m" },
@@ -146,17 +146,17 @@ export const FAKE_LAYERS: MockLayer[] = [
         presets: [],
     },
     {
-        id: "fountain", name: "Placemaker.Fountain.Name", icon: "fountain", kind: "addOn", accepts: ["paved", "core", "green"], emits: [],
+        id: "fountain", name: "Placemaker.AddOn.Fountain.Name", icon: "fountain", kind: "addOn", accepts: ["paved", "core", "green"], emits: [],
         controls: [{ id: "asset", kind: "asset", tier: "essential", group: "", label: "Placemaker.Fountain.Asset", assetCategory: "centerpiece", default: "" }],
         presets: [],
     },
     {
-        id: "restrooms", name: "Placemaker.Restrooms.Name", icon: "restrooms", kind: "addOn", accepts: ["green", "paved", "core"], emits: [],
+        id: "restrooms", name: "Placemaker.AddOn.Restrooms.Name", icon: "restrooms", kind: "addOn", accepts: ["green", "paved", "core"], emits: [],
         controls: [{ id: "count", kind: "slider", tier: "essential", group: "", label: "Placemaker.Restrooms.Count", min: 1, max: 4, step: 1, unit: "count", default: 1 }],
         presets: [],
     },
     {
-        id: "bigTrees", name: "Placemaker.BigTrees.Name", icon: "bigTrees", kind: "addOn", accepts: ["green", "edge", "root", "block", "core"], emits: [],
+        id: "bigTrees", name: "Placemaker.AddOn.BigTrees.Name", icon: "bigTrees", kind: "addOn", accepts: ["green", "edge", "root", "block", "core"], emits: [],
         controls: [
             { id: "count", kind: "slider", tier: "essential", group: "", label: "Placemaker.BigTrees.Count", min: 1, max: 30, step: 1, unit: "count", default: 8 },
             { id: "species", kind: "assetMulti", tier: "essential", group: "", label: "Placemaker.BigTrees.Species", assetCategory: "tree", default: [] },
@@ -282,11 +282,11 @@ export const FAKE_STRINGS: Record<string, string> = {
     "Placemaker.Split.Name": "Split", "Placemaker.Split.Ratio": "First part", "Placemaker.Split.Direction": "Direction", "Placemaker.Split.Vertical": "Side by side",
     "Placemaker.Split.Horizontal": "Stacked", "Placemaker.Split.Divider": "Path between parts",
     "Placemaker.Campground.Name": "Campground", "Placemaker.Campground.Pitches": "Pitches", "Placemaker.Campground.Campfires": "Campfires",
-    "Placemaker.Playground.Name": "Playground", "Placemaker.Playground.Size": "Size", "Placemaker.Playground.Equipment": "Equipment",
+    "Placemaker.AddOn.Playground.Name": "Playground", "Placemaker.Playground.Size": "Size", "Placemaker.Playground.Equipment": "Equipment",
     "Placemaker.Size.Small": "Small", "Placemaker.Size.Medium": "Medium", "Placemaker.Size.Large": "Large",
-    "Placemaker.Fountain.Name": "Fountain", "Placemaker.Fountain.Asset": "Fountain",
-    "Placemaker.Restrooms.Name": "Restrooms", "Placemaker.Restrooms.Count": "Buildings",
-    "Placemaker.BigTrees.Name": "Big trees", "Placemaker.BigTrees.Count": "Trees", "Placemaker.BigTrees.Species": "Species",
+    "Placemaker.AddOn.Fountain.Name": "Fountain", "Placemaker.Fountain.Asset": "Fountain",
+    "Placemaker.AddOn.Restrooms.Name": "Restrooms", "Placemaker.Restrooms.Count": "Buildings",
+    "Placemaker.AddOn.BigTrees.Name": "Big trees", "Placemaker.BigTrees.Count": "Trees", "Placemaker.BigTrees.Species": "Species",
     "Placemaker.EdgeZoning.Name": "Edge zoning", "Placemaker.EdgeZoning.Zone": "Zone", "Placemaker.EdgeZoning.Depth": "Depth (cells)",
     "Placemaker.Zone.ResidentialLow": "Low res.", "Placemaker.Zone.ResidentialHigh": "High res.", "Placemaker.Zone.Commercial": "Commercial",
     "Placemaker.Zone.Mixed": "Mixed", "Placemaker.Zone.Office": "Office", "Placemaker.Zone.Industry": "Industry",

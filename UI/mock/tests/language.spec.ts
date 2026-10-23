@@ -24,6 +24,12 @@ for (const [id,label] of [["park","公园"],["parking","停车场"],["roads","�
         await pickType(page,id);
         await waitPlanned(page);
         await expect(page.getByTestId("recipe-"+id)).toContainText(label);
+        if (id === "park") {
+            const extras = page.getByTestId("feature-grid");
+            for (const name of ["游乐场", "喷泉", "公共厕所", "大树"])
+                await expect(extras.getByText(name, { exact: true })).toBeVisible();
+            await expect(extras.getByText("Name", { exact: true })).toHaveCount(0);
+        }
         await noTextOverflow(page,"Chinese " + id);
         await page.getByTestId("placemaker-panel").screenshot({path:testInfo.outputPath(id+"-zh.png")});
         await page.getByTestId("language-en-US").click();
