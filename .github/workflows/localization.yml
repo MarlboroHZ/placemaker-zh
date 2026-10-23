@@ -1,0 +1,24 @@
+name: Chinese localization
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test tools/localization/check.test.cjs
+      - run: node UI/tools/extract-lang.js --check
+      - run: node tools/localization/check.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chinese-localization-report
+          path: .forensics/localization/zh-HANS-report.json
+          if-no-files-found: ignore

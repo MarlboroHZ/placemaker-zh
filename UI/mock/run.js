@@ -76,6 +76,7 @@ function staticServer(port) {
 
     console.log("• Building the mock UI…");
     run("node", ["tools/extract-lang.js"]);
+    run("node", ["tools/bundle-locales.js"]);
     run(npx, ["webpack", "--config", "mock/webpack.config.js"]);
 
     let server;
@@ -102,14 +103,18 @@ function staticServer(port) {
         process.on("SIGTERM", stop);
         return;
     }
-    const pw = spawnSync(npx, ["playwright", "test", ...args.filter((a) => a !== "--test" && a !== "--no-host")], {
+    const pw = spawn(npx, ["playwright", "test", ...args.filter((a) => a !== "--test" && a !== "--no-host")], {
         stdio: "inherit",
         cwd: UI,
         shell: process.platform === "win32",
         env: { ...process.env, PM_MOCK_URL: url },
     });
+    const code = await new Promise((resolve) => {
+        pw.once("error", () => resolve(1));
+        pw.once("exit", (code) => resolve(code ?? 1));
+    });
     server.kill();
-    process.exit(pw.status ?? 1);
+    process.exit(code);
 })().catch((e) => {
     console.error(e);
     process.exit(1);

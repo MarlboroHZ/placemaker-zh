@@ -19,3 +19,4 @@ docs/gallery-*/
 
 # Road lab renders (regenerate: dotnet run -c Release --project Tests/Placemaker.RoadLab)
 docs/roadlab/*/
+UI/src/lang/locales.generated.json

@@ -1,0 +1,67 @@
+[
+  {
+    "key": "Placemaker.Stat.FieldArea",
+    "definitions": [
+      {
+        "file": "en-US.fairground.json",
+        "text": "Crowd field"
+      },
+      {
+        "file": "en-US.farmstead.json",
+        "text": "Field area"
+      }
+    ]
+  },
+  {
+    "key": "Placemaker.UI.Group.hives",
+    "definitions": [
+      {
+        "file": "en-US.farmstead.json",
+        "text": "Beehives"
+      },
+      {
+        "file": "en-US.urbanFarm.json",
+        "text": "Hives"
+      }
+    ]
+  },
+  {
+    "key": "Placemaker.Feature.flowerbeds",
+    "definitions": [
+      {
+        "file": "en-US.farmstead.json",
+        "text": "Flowerbeds"
+      },
+      {
+        "file": "en-US.waterfront.json",
+        "text": "Flower beds"
+      }
+    ]
+  },
+  {
+    "key": "Placemaker.Stat.Bays",
+    "definitions": [
+      {
+        "file": "en-US.golf.json",
+        "text": "Hitting bays"
+      },
+      {
+        "file": "en-US.scrapyard.json",
+        "text": "Bays"
+      }
+    ]
+  },
+  {
+    "key": "Placemaker.UI.Group.zoning",
+    "definitions": [
+      {
+        "file": "en-US.parking.json",
+        "text": "Buildings"
+      },
+      {
+        "file": "en-US.roads.json",
+        "text": "Zoning"
+      }
+    ]
+  }
+]

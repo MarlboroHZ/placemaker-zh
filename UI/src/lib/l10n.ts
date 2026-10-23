@@ -5,6 +5,8 @@
 // locale entry still reads well ("PathWidth" → "Path width") instead of showing a raw key.
 import { useCallback, useMemo } from "react";
 import { useLocalization } from "cs2/l10n";
+import dictionaries from "../lang/locales.generated.json";
+import { useLanguage } from "./language";
 import { LocText } from "../contract";
 
 export type TFunc = (key: string, fallback?: string, args?: ReadonlyArray<string | number>) => string;
@@ -31,6 +33,7 @@ export function substitute(text: string, args?: ReadonlyArray<string | number>):
 }
 
 export function useT() {
+    const language = useLanguage();
     let translate: ((id: string, fallback?: string | null) => string | null) | null = null;
     try {
         translate = useLocalization().translate;
@@ -42,7 +45,12 @@ export function useT() {
             let s: string | null = null;
             if (key) {
                 try {
-                    s = translate ? translate(key, null) : null;
+                    if (language === "system") s = translate ? translate(key, null) : null;
+                    else if (key.startsWith("Placemaker.")) {
+                        const chosen = dictionaries[language] as Record<string, string>;
+                        const english = dictionaries["en-US"] as Record<string, string>;
+                        s = chosen[key] ?? english[key] ?? null;
+                    } else s = translate ? translate(key, null) : null;
                 } catch {
                     s = null;
                 }
@@ -50,7 +58,7 @@ export function useT() {
             if (s == null || s === key) s = fallback ?? humanize(key);
             return substitute(s, args);
         },
-        [translate],
+        [translate, language],
     );
     const tl = useCallback((loc: LocText | undefined | null, fallback?: string) => (loc && loc.key ? t(loc.key, fallback, loc.args) : fallback ?? ""), [t]);
     return useMemo(() => ({ t, tl }), [t, tl]);

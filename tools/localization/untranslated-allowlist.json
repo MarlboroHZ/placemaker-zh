@@ -1,0 +1,19 @@
+{
+  "Placemaker.Commercial.stallAngle.90": "90°",
+  "Placemaker.Commercial.stallAngle.60": "60°",
+  "Placemaker.Commercial.stallAngle.45": "45°",
+  "Placemaker.Name": "Placemaker",
+  "Placemaker.Field.Track.format.school": "300 m",
+  "Placemaker.Field.Track.format.mini": "200 m",
+  "Placemaker.RestArea.stallAngle.90": "90°",
+  "Placemaker.RestArea.stallAngle.60": "60°",
+  "Placemaker.RestArea.stallAngle.45": "45°",
+  "Placemaker.TransitPlaza.stallAngle.90": "90°",
+  "Placemaker.TransitPlaza.stallAngle.60": "60°",
+  "Placemaker.TransitPlaza.stallAngle.45": "45°",
+  "Placemaker.UI.Heading.InOne": "{0} — {1}",
+  "Placemaker.UI.Heading.Override": "{0} — {1}",
+  "Placemaker.UI.Literal": "{0}",
+  "Placemaker.UI.Target.One": "{0} {1}",
+  "Placemaker.Settings.Tab.Main": "Placemaker"
+}

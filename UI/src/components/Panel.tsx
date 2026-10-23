@@ -7,6 +7,7 @@
 //   hints   — shortcut strip from state.hints
 // While drawing, C# may collapse it to a slim header + primary button (state.panelCollapsed); it then
 // shows an obvious "Show options" button.
+import { LanguageSettings } from "./LanguageSettings";
 import { Legend } from "./Legend";
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import classNames from "classnames";
@@ -891,6 +892,7 @@ export const PlacemakerPanel = () => {
                         <div className={s.panel} data-testid="placemaker-panel" data-stage={state.stage}>
                             <div className={s.panelTint}>
                                 {header}
+                                <LanguageSettings />
                                 {outgrow ? (
                                     <ErrorBoundary name="outgrow">
                                         <PolishCityCard state={state} />

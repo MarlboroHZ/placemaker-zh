@@ -1,0 +1,4 @@
+{
+  "Placemaker.Harmony.Issue.SteepPath": "部分步道坡度过大：地面太陡，若不大量挖方就无法平整。",
+  "Placemaker.Harmony.Issue.Failed": "无法平整步道和平台（{0}），将保持原有地形。"
+}

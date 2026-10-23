@@ -76,6 +76,8 @@
   "Placemaker.UI.Info.UngroupAsk": "Ungroup it? Its pieces are then clicked and bulldozed one at a time. Group again puts it back.",
   "Placemaker.UI.Info.Ungrouped": "Ungrouped: you click and bulldoze its pieces one at a time. Remove takes all of it.",
   "Placemaker.UI.Key.Enter": "Enter",
+  "Placemaker.UI.Language.Label": "Language",
+  "Placemaker.UI.Language.System": "Follow game",
   "Placemaker.UI.LauncherTip": "Choose an area and turn it into a park, plaza, parking lot, streets… or your own mix.",
   "Placemaker.UI.Legend.All": "All",
   "Placemaker.UI.Legend.AllTip": "Show every layer as it was",

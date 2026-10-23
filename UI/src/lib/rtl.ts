@@ -3,6 +3,8 @@
 // Adapted from Grid Road Generator (Ti4goc).
 import { useEffect, useState } from "react";
 
+import { useLanguage } from "./language";
+
 const RTL_STYLE_IDS = ["arabic-locale-rtl-style", "persian-localization-rtl-style"];
 
 const isRtlActive = () => {
@@ -14,6 +16,7 @@ const isRtlActive = () => {
 };
 
 export function useRtl(): boolean {
+    const language = useLanguage();
     const [rtl, setRtl] = useState(isRtlActive);
     useEffect(() => {
         if (typeof MutationObserver === "undefined") return;
@@ -21,5 +24,5 @@ export function useRtl(): boolean {
         observer.observe(document.head, { childList: true, subtree: true, characterData: true });
         return () => observer.disconnect();
     }, []);
-    return rtl;
+    return language === "system" && rtl;
 }

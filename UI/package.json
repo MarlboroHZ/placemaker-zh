@@ -5,11 +5,11 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "node tools/extract-lang.js && webpack",
-    "dev": "webpack --watch",
+    "build": "node tools/extract-lang.js && node tools/bundle-locales.js && webpack",
+    "dev": "node tools/extract-lang.js && node tools/bundle-locales.js && webpack --watch",
     "lang": "node tools/extract-lang.js",
     "lint:css": "node tools/css-lint.js build",
-    "mock:build": "webpack --config mock/webpack.config.js",
+    "mock:build": "node tools/extract-lang.js && node tools/bundle-locales.js && webpack --config mock/webpack.config.js",
     "mock": "node mock/run.js",
     "test:ui": "node mock/run.js --test"
   },
