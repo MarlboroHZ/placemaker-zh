@@ -21,6 +21,7 @@ module.exports = {
         ...base.resolve,
         alias: {
             ...base.resolve.alias,
+            "../lang/locales.generated.json$": path.resolve(__dirname, "locales.ts"),
             "cs2/api": path.resolve(__dirname, "cs2/api.ts"),
             "cs2/ui": path.resolve(__dirname, "cs2/ui.tsx"),
             "cs2/l10n": path.resolve(__dirname, "cs2/l10n.tsx"),
